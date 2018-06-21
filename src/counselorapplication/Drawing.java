@@ -3,13 +3,13 @@ package counselorapplication;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import javax.swing.*;
 import java.awt.Font;
 
 public class Drawing extends JPanel{
 
     String z, x, c, v, b, n;
     
+    @Override
     public void paintComponent(Graphics g)
     {
         z = Module1.gg4.getText();

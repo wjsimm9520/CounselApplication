@@ -3,22 +3,14 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ContainerListener;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowListener;
 import java.awt.event.FocusListener;
-import java.beans.PropertyChangeListener;
-import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import net.proteanit.sql.DbUtils;
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.HeadlessException;
 import javax.swing.JPanel;
-import java.lang.Object;
-import java.lang.String;
 import java.util.*;
 import java.net.URL;
 import java.util.logging.Level;
@@ -2938,6 +2930,7 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
     
     public class FormListener implements java.awt.event.ActionListener, javax.swing.event.ChangeListener {
         FormListener() {}
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             if (evt.getSource() == cmdclearform) {
                 Module1.this.cmdclearformActionPerformed(evt);
@@ -3007,6 +3000,7 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             }
         }
 
+        @Override
         public void stateChanged(javax.swing.event.ChangeEvent evt) {
             if (evt.getSource() == slideraddiction) {
                 Module1.this.slideraddictionStateChanged(evt);
@@ -3014,15 +3008,18 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
         }
     }
     
+    @Override
     public void focusGained(java.awt.event.FocusEvent evt) {
     }
 
+    @Override
     public void focusLost(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == txtbirthdate3) {
             Module1.this.txtbirthdate3FocusLost(evt);
         }
     }
     
+    @Override
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getSource() == j1) {
             Module1.this.j1MouseClicked(evt);
@@ -3176,36 +3173,47 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
         }
     }
     
+    @Override
     public void mouseEntered(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void mouseExited(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void mouseReleased(java.awt.event.MouseEvent evt) {
     }
     
+    @Override
     public void windowActivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosed(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosing(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeactivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeiconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowIconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowOpened(java.awt.event.WindowEvent evt) {
         if (evt.getSource() == Module1.this) {
             try {
@@ -3235,7 +3243,7 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             s = rs.getString("Participants_Name");
             sx = rs.getString("Date_of_Birth");
             }      
-        }catch (SQLException e){} 
+        }catch (SQLException ex){} 
         try {
             if ((caz.equals(s))&&(caz2.equals(sx))) { 
                  JOptionPane.showMessageDialog(null,"Name & Birth Date Found");
@@ -3243,7 +3251,7 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException exc){}
     }   
 
     public void cmdnext1ActionPerformed(java.awt.event.ActionEvent evt) {                                 
@@ -3264,8 +3272,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
           txtname.setText(jt);
           String fl1 = txtschool.getText();
           j26.setText(fl1);
-          String g = txtothergroup1.getText();
-          j27.setText(g);
+          String grp1 = txtothergroup1.getText();
+          j27.setText(grp1);
           String jy = txtothergroup2.getText();
           j28.setText(jy);
           String ju = txtothergroup3.getText();
@@ -3854,15 +3862,15 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
           List<String> data1 = Arrays.asList(s1, w1, q1, r1, h1);
           List<String> data = Arrays.asList(s, w, q, r, h);
           
-          List<String> data3 = new ArrayList<String>();
+          List<String> data3 = new ArrayList<>();
           data3.addAll(data);
           data3.addAll(data1);
-          Set<String> set = new LinkedHashSet<String>(data3);
+          Set<String> set = new LinkedHashSet<>(data3);
           
           String[] results = new String[set.size()];   
           set.toArray(results);          
-          for (String u : results){ 
-            if (u.isEmpty()){
+          for (String checkResults : results){ 
+            if (checkResults.isEmpty()){
             gg1.setText("");
             gg2.setText("");
             gg3.setText("");
@@ -3991,8 +3999,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
           txtname.setText(jt);
           String fl1 = txtschool.getText();
           j26.setText(fl1);
-          String g = txtothergroup1.getText();
-          j27.setText(g);
+          String grp1 = txtothergroup1.getText();
+          j27.setText(grp1);
           String jy = txtothergroup2.getText();
           j28.setText(jy);
           String ju = txtothergroup3.getText();
@@ -4504,14 +4512,14 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
           
           List<String> data1 = Arrays.asList(s1, w1, q1, r1, h1);
           List<String> data = Arrays.asList(s, w, q, r, h);
-          List<String> data3 = new ArrayList<String>();
+          List<String> data3 = new ArrayList<>();
           data3.addAll(data);
           data3.addAll(data1);
-          Set<String> set = new LinkedHashSet<String>(data3);
+          Set<String> set = new LinkedHashSet<>(data3);
           
           String[] results = new String[set.size()];   
           set.toArray(results);
-          for (String u : results){ 
+          for (String checkResults : results){ 
             if (results.length == 1){
             gg1.setText(results[0]);
             }
@@ -4632,25 +4640,25 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setString(4, txtfiveyearplans.getText());
             pst.setString(5, txtintodrugs.getText());
             pst.setString(6, txtwhyusedrugs.getText());
-            pst.setString(7, Name7.toString());
+            pst.setString(7, Name7);
             pst.setInt(8, slideraddiction.getValue());
             pst.setString(9, txtfunactivities.getText());
             pst.setString(10, txtwishfulfun.getText());
-            pst.setString(11, Name8.toString());
+            pst.setString(11, Name8);
             pst.setString(12, txtotherrelationship.getText());
-            pst.setString(13, Name9.toString());
-            pst.setString(14, Name10.toString());
+            pst.setString(13, Name9);
+            pst.setString(14, Name10);
             pst.setString(15, txtotherjobsituation.getText());
             pst.setString(16, txtlastweekjob.getText());
             pst.setString(17, txtskills.getText());
-            pst.setString(18, Name11.toString());
+            pst.setString(18, Name11);
             pst.setString(19, txtotherlivingarrangements.getText());
-            pst.setString(20, Name12.toString());
+            pst.setString(20, Name12);
             pst.setString(21, txthealthinsurance.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -4739,16 +4747,16 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst = conn.prepareStatement(sql);
             pst.setString(1, txtname3.getText());
             pst.setString(2, txtbirthdate4.getText());
-            pst.setString(3, Formal.toString());
+            pst.setString(3, Formal);
             pst.setString(4, txtschool.getText());
             pst.setString(5, txtothergroup1.getText());
-            pst.setString(6, Informal.toString());
+            pst.setString(6, Informal);
             pst.setString(7, txtothergroup2.getText());
             pst.setString(8, txtothergroup3.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }                          
     }
     
@@ -4766,8 +4774,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setString(7, txtfifthgroup.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
         
@@ -4784,8 +4792,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setString(7, txtfifthgroup2.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     } 
     
@@ -4802,8 +4810,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setString(7, gg5.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -4821,17 +4829,17 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setString(5, txtknownetwork.getText());
             pst.setString(6, txttrustclosely.getText());
             pst.setString(7, txtregularlyhangout.getText());
-            pst.setString(8, Name1.toString());
-            pst.setString(9, Name2.toString());
-            pst.setString(10, Name3.toString());
+            pst.setString(8, Name1);
+            pst.setString(9, Name2);
+            pst.setString(10, Name3);
             pst.setString(11, txtconnectothers.getText());
             pst.setInt(12, sliderclosiness.getValue());
             pst.setInt(13, sliderpersonalclosiness.getValue());
             pst.setInt(14, slidergroupreact.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -4850,8 +4858,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setInt(9, slider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -4870,8 +4878,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setInt(9, js6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -4890,8 +4898,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setInt(9, qe6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -4910,8 +4918,8 @@ public class Module1 extends JFrame implements WindowListener, MouseListener, Fo
             pst.setInt(9, ccslider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
         
     }

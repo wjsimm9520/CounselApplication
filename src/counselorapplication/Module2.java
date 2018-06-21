@@ -1,18 +1,11 @@
 package counselorapplication;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerListener;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowListener;
 import java.awt.event.FocusListener;
-import java.beans.PropertyChangeListener;
-import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import net.proteanit.sql.DbUtils;
 import java.awt.Color;
-import java.awt.Graphics;
 import javax.swing.JPanel;
 import java.net.URL;
 import java.util.logging.Level;
@@ -2527,6 +2520,7 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
         
     }
      
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == cmdnext2) {
             Module2.this.cmdnext2ActionPerformed(evt);
@@ -2602,24 +2596,31 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
         }
     }
 
+    @Override
     public void windowActivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosed(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosing(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeactivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeiconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowIconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowOpened(java.awt.event.WindowEvent evt) {
         if (evt.getSource() == Module2.this) {
             try {
@@ -2630,9 +2631,11 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
         }
     }
     
+    @Override
     public void focusGained(java.awt.event.FocusEvent evt) {
     }
 
+    @Override
     public void focusLost(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == txtbirthdate) {
             Module2.this.txtbirthdateFocusLost(evt);
@@ -2812,7 +2815,7 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException ex){}
     }
     
     public void txtbirthdate6FocusLost(java.awt.event.FocusEvent evt) {       
@@ -2837,7 +2840,7 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException ex){}
     }   
 
     public void cmdclear1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -2948,17 +2951,17 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setString(5, txtknownetwork.getText());
             pst.setString(6, txttrustclosely.getText());
             pst.setString(7, txtregularlyhangout.getText());
-            pst.setString(8, Name1.toString());
-            pst.setString(9, Name2.toString());
-            pst.setString(10, Name3.toString());
+            pst.setString(8, Name1);
+            pst.setString(9, Name2);
+            pst.setString(10, Name3);
             pst.setString(11, txtconnectothers.getText());
             pst.setInt(12, sliderclosiness.getValue());
             pst.setInt(13, sliderpersonalclosiness.getValue());
             pst.setInt(14, slidergroupreact.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     } 
     
@@ -2977,8 +2980,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, slider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -2997,8 +3000,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, js6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3017,8 +3020,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, dslider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3037,8 +3040,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, cslider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3056,16 +3059,16 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setString(5, txtknownetwork1.getText());
             pst.setString(6, txttrustclosely1.getText());
             pst.setString(7, txtregularlyhangout1.getText());
-            pst.setString(8, Name4.toString());
-            pst.setString(9, Name5.toString());
-            pst.setString(10, Name6.toString());
+            pst.setString(8, Name4);
+            pst.setString(9, Name5);
+            pst.setString(10, Name6);
             pst.setString(11, txtconnectothers.getText());
             pst.setInt(12, sliderclosiness1.getValue());
             pst.setInt(13, sliderpersonalclosiness1.getValue());
             pst.setInt(14, slidergroupreact1.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     } 
@@ -3085,8 +3088,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, jjslider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3105,8 +3108,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, jjs6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3125,8 +3128,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, ddslider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3145,8 +3148,8 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             pst.setInt(9, ccslider6.getValue());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
     
@@ -3170,7 +3173,7 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             else {              
               JOptionPane.showMessageDialog(null, "Group Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException ex){}
     }
     
     public void cmdgroup3ActionPerformed(java.awt.event.ActionEvent evt) { 
@@ -3193,7 +3196,7 @@ public class Module2 extends JFrame implements ActionListener, WindowListener, F
             else {              
               JOptionPane.showMessageDialog(null, "Group Not Found");
             }           
-        }catch (Exception e){}
+        }catch (HeadlessException ex){}
     }
     
 }

@@ -4,12 +4,14 @@ import java.sql.*;
 import javax.swing.*;
 import java.net.URL;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FrontOfApplication extends JFrame implements ActionListener {
   
-    String g1, g2, s1, s2, g3, g4, s3, s4; 
+    String userName1, userName2, password1, password2, s1, s2, g3, g4, s3, s4;
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -72,7 +74,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
         URL icon = this.getClass().getClassLoader().getResource("database.png");
         ImageIcon ic = new ImageIcon(icon);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Database Login");
+        setTitle("Counselor Application");
         setFont(new java.awt.Font("Serif", 0, 20));
         setIconImage(ic.getImage());
         setSize(new Dimension(600, 400));
@@ -198,7 +200,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
 
         
         cmdcounty.setFont(new Font("Serif", 0, 16)); 
-        cmdcounty.setText("Login to County");
+        cmdcounty.setText("Court Records");
         cmdcounty.addActionListener(this);
         
         cmddast.setFont(new Font("Serif", 0, 16)); 
@@ -293,7 +295,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
     public void helpwindowActionPerformed(java.awt.event.ActionEvent evt) {                                          
         JOptionPane.showMessageDialog(null,
                                       "The User only needs to click the button once to open a program. \n"
-                                        +"\nThe Login County Button is only used by Counselors and Clerks. \n"
+                                        +"\nThe Court Records Button is only used by Counselors and Clerks. \n"
                                         +"\nDAST is a drug and alcohol abuse test. \n" 
                                         +"\nMAST is a Michigan test for alcoholism. \n" 
                                         +"\nBasic Demographics is used by participants to get basic background information. \n"  
@@ -349,14 +351,34 @@ public class FrontOfApplication extends JFrame implements ActionListener {
        frame3.setVisible(true); 
     }
     
+    public String generateHashedPassword(String passwordToHash){
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(passwordToHash.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+            
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrontOfApplication.class.getName()).log(Level.SEVERE, null, ex);
+        }
+	return generatedPassword;
+    }
+    
     public void bsubmit2ActionPerformed(java.awt.event.ActionEvent evt) {          
-        g3 = tf3.getText();
-        g4 = tf4.getText();
+        userName2 = tf3.getText();
+        password2 = tf4.getText();
+        String hashedPassword = generateHashedPassword(password2);
         String sql = "SELECT * FROM court_login WHERE UserName = ? AND UserPassword = ?;";
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, tf3.getText());
-            pst.setString(2, tf4.getText());
+            pst.setString(2, hashedPassword);
             rs = pst.executeQuery();
             while(rs.next()){
             s3 = rs.getString("UserName");
@@ -364,7 +386,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
             }      
         }catch (SQLException e){}  
         try {
-            if ((g3.equals(s3))&&(g4.equals(s4))) { 
+            if ((userName2.equals(s3))&&(hashedPassword.equals(s4))) { 
              JOptionPane.showMessageDialog(null," User Name & User Password Found");
              County count = new County();
              count.setVisible(true);
@@ -434,13 +456,14 @@ public class FrontOfApplication extends JFrame implements ActionListener {
     
     public void bsubmitActionPerformed(java.awt.event.ActionEvent evt) { 
         frame2.dispose();
-        g1 = tf1.getText();
-        g2 = tf2.getText();
+        userName1 = tf1.getText();
+        password1 = tf2.getText();
+        String hashedPassword = generateHashedPassword(password1);
         String sql = "SELECT * FROM counselor_login WHERE UserName = ? AND UserPassword = ?;";
         try {
             pst = conn.prepareStatement(sql);
-            pst.setString(1, tf1.getText());
-            pst.setString(2, tf2.getText());
+            pst.setString(1, userName1);
+            pst.setString(2, hashedPassword);
             rs = pst.executeQuery();
             while(rs.next()){
             s1 = rs.getString("UserName");
@@ -448,7 +471,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
             }      
         }catch (SQLException e){} 
         try {
-            if ((g1.equals(s1))&&(g2.equals(s2))) { 
+            if ((userName1.equals(s1))&&(hashedPassword.equals(s2))) { 
                  JOptionPane.showMessageDialog(null," User Name & User Password Found");
                  conn = mysqlconnect.ConnectDb();
                  URL icon3 = this.getClass().getClassLoader().getResource("database.png");

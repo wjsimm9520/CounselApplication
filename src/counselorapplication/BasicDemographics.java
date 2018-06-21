@@ -1,19 +1,12 @@
 package counselorapplication;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
-import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.*;
-import net.proteanit.sql.DbUtils;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.net.URL;
-import java.io.*;
 import java.util.logging.*;
-import javax.imageio.*;
 
 
 class BasicDemographics extends JFrame implements ActionListener, WindowListener, FocusListener, MouseListener {
@@ -947,6 +940,7 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
     }
 
 
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == cmdnext1) {
             BasicDemographics.this.cmdnext1ActionPerformed(evt);
@@ -965,9 +959,11 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
         }
     }
 
+    @Override
     public void focusGained(java.awt.event.FocusEvent evt) {
     }
 
+    @Override
     public void focusLost(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == txtcasenumber2) {
             BasicDemographics.this.txtcasenumber2FocusLost(evt);
@@ -977,6 +973,7 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
         }
     }
     
+    @Override
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getSource() == checkfirstchild1) {
             BasicDemographics.this.checkfirstchild1MouseClicked(evt);
@@ -1076,36 +1073,47 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
         }
     }
     
+    @Override
     public void mouseEntered(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void mouseExited(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void mouseReleased(java.awt.event.MouseEvent evt) {
     }
 
+    @Override
     public void windowActivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosed(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosing(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeactivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeiconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowIconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowOpened(java.awt.event.WindowEvent evt) {
         if (evt.getSource() == BasicDemographics.this) {
             try {
@@ -1266,29 +1274,29 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
             pst.setString(2, txtcasenumber2.getText());
             pst.setString(3, txtname1.getText());
             pst.setString(4, txtbirthdate2.getText());
-            pst.setString(5, Drug.toString());
+            pst.setString(5, Drug);
             pst.setString(6, txtotherdrug.getText());
             pst.setString(7, txtagedrugfirst.getText());
             pst.setString(8, txtageregulardrug.getText());
             pst.setString(9, txtagealcoholfirst.getText());
             pst.setString(10, txtageregularalcohol.getText());
-            pst.setString(11, Name7.toString());
-            pst.setString(12, Name8.toString());
+            pst.setString(11, Name7);
+            pst.setString(12, Name8);
             pst.setString(13, txtdrugfreebabies.getText());
-            pst.setString(14, Name1.toString());
-            pst.setString(15, Child.toString());
-            pst.setString(16, Name2.toString());
-            pst.setString(17, Name3.toString());
-            pst.setString(18, Name4.toString());
+            pst.setString(14, Name1);
+            pst.setString(15, Child);
+            pst.setString(16, Name2);
+            pst.setString(17, Name3);
+            pst.setString(18, Name4);
             pst.setString(19, txtothereducation.getText());
             pst.setString(20, txtsourcesincome.getText());
-            pst.setString(21, Name5.toString());
+            pst.setString(21, Name5);
             pst.setString(22, txtexplainconvictions.getText());
-            pst.setString(23, Name6.toString());
-            pst.setString(24, Name9.toString());
+            pst.setString(23, Name6);
+            pst.setString(24, Name9);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Changes Submitted");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }                                         
@@ -1394,7 +1402,7 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
             else {              
               JOptionPane.showMessageDialog(null,"Case Number Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException e){}
     }  
     
     public void txtbirthdate2FocusLost(java.awt.event.FocusEvent evt) {       
@@ -1419,7 +1427,7 @@ class BasicDemographics extends JFrame implements ActionListener, WindowListener
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException e){}
     }
 
     public void checkfirstchild1MouseClicked(java.awt.event.MouseEvent evt) {                                

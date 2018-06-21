@@ -1,39 +1,27 @@
 package counselorapplication;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerListener;
 import java.awt.event.WindowListener;
 import java.awt.event.MouseListener;
 import java.awt.event.FocusListener;
-import java.beans.PropertyChangeListener;
 import java.net.URL;
 import javax.swing.table.*;
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import net.proteanit.sql.DbUtils;
 import java.io.*;
 import java.util.*;
 import java.awt.print.*;
 import java.awt.Color;
-import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineBreakMeasurer;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
-import java.awt.geom.Point2D;
 import java.awt.print.Book;
-import java.text.AttributedString;
 import java.awt.datatransfer.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.DefaultEditorKit;
-import javax.swing.TransferHandler.*;
-import javax.swing.border.LineBorder;
 
     public class County extends JFrame implements ActionListener, WindowListener, FocusListener, Printable, Serializable, MouseListener {
     
@@ -47,7 +35,7 @@ import javax.swing.border.LineBorder;
       String caz, caz2, s, sx, caz1, caz21, sx1, sx2, z69, z70, printer, printer1;
       Graphics2D g; 
       
-      public final static Cursor TEXT_CURSOR = new Cursor(Cursor.TEXT_CURSOR);
+      public final static Cursor TEXT_CURSOR1 = new Cursor(Cursor.TEXT_CURSOR);
       public JFrame frame;
       public JFrame frame2;
       public JFrame frame3;
@@ -469,7 +457,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta1.setModel(DbUtils.resultSetToTableModel(rs));
             columnWidths(ta1);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -480,7 +468,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta2.setModel(DbUtils.resultSetToTableModel(rs));
             columnWidths(ta2);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -492,7 +480,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta4.setModel(DbUtils.resultSetToTableModel(rs));
             columnWidths(ta4);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -504,7 +492,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta6.setModel(DbUtils.resultSetToTableModel(rs));
             columnWidths(ta6);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -516,7 +504,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta7.setModel(DbUtils.resultSetToTableModel(rs));
             columnWidths(ta7);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -2350,23 +2338,29 @@ import javax.swing.border.LineBorder;
 
         getContentPane().add(t1);
     }
+      @Override
     public void mouseClicked(java.awt.event.MouseEvent evt) {
     }
 
+      @Override
    public void mouseEntered(java.awt.event.MouseEvent evt) {        
         
     }
 
+      @Override
     public void mouseExited(java.awt.event.MouseEvent evt) {
         
     }
     
+      @Override
     public void mousePressed(java.awt.event.MouseEvent evt) {
     }
 
+      @Override
     public void mouseReleased(java.awt.event.MouseEvent evt) {
     }
     
+      @Override
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == save) {
             County.this.saveActionPerformed(evt);
@@ -2496,24 +2490,31 @@ import javax.swing.border.LineBorder;
         }        
     }
 
+      @Override
     public void windowActivated(java.awt.event.WindowEvent evt) {
     }
 
+      @Override
     public void windowClosed(java.awt.event.WindowEvent evt) {
     }
 
+      @Override
     public void windowClosing(java.awt.event.WindowEvent evt) {
     }
 
+      @Override
     public void windowDeactivated(java.awt.event.WindowEvent evt) {
     }
 
+      @Override
     public void windowDeiconified(java.awt.event.WindowEvent evt) {
     }
 
+      @Override
     public void windowIconified(java.awt.event.WindowEvent evt) {
     }
 
+      @Override
     public void windowOpened(java.awt.event.WindowEvent evt) {
         if (evt.getSource() == County.this) {
             try {
@@ -2524,9 +2525,11 @@ import javax.swing.border.LineBorder;
         }
     }
     
+      @Override
     public void focusGained(java.awt.event.FocusEvent evt) {
     }
 
+      @Override
     public void focusLost(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == txtcasenumber1) {
             County.this.txtcasenumber1FocusLost(evt);
@@ -2559,7 +2562,7 @@ import javax.swing.border.LineBorder;
             else {              
               JOptionPane.showMessageDialog(null,"Case Number Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException e){}
     }
     
     public void txtbirthdate2FocusLost(java.awt.event.FocusEvent evt) {       
@@ -2584,7 +2587,7 @@ import javax.swing.border.LineBorder;
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException e){}
     }
     
     public void txtbirthdate4FocusLost(java.awt.event.FocusEvent evt) {       
@@ -2609,7 +2612,7 @@ import javax.swing.border.LineBorder;
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException e){}
     }   
     
     public void saveActionPerformed(java.awt.event.ActionEvent evt) {          
@@ -2633,15 +2636,14 @@ import javax.swing.border.LineBorder;
           String out16 = out1+"\n\n"+out2+"  "+out3+"\n\n"+out4+"  "+out5+"\n\n"+out6+"  "+out7+"\n\n"+out8+"  "+out9+"\n\n"+out10+"  "+out11+"\n\n"+out12+"  "+out13+"\n\n"+out14+"  "+out15;
           JFileChooser saver = new JFileChooser("./");  
         int returnVal = saver.showSaveDialog(this);  
-        File file = saver.getSelectedFile();  
-        BufferedWriter writer = null;  
+        File fileSaver = saver.getSelectedFile();
         if (returnVal == JFileChooser.APPROVE_OPTION)  
         {  
             try  
             {  
-            writer = new BufferedWriter( new FileWriter( file.getAbsolutePath()+".doc"));  
-            writer.write(out16);  
-            writer.close( );  
+                try (BufferedWriter writer = new BufferedWriter( new FileWriter( fileSaver.getAbsolutePath()+".doc"))) {
+                    writer.write(out16);
+                }  
             JOptionPane.showMessageDialog(this, "Court Reviews was Saved Successfully!",  
                         "Success!", JOptionPane.INFORMATION_MESSAGE);  
             }  
@@ -2683,15 +2685,14 @@ import javax.swing.border.LineBorder;
           String out44 = out17+"\n\n"+out18+"  "+out19+"\n\n"+out20+"  "+out21+"\n\n"+out22+"  "+out23+"\n\n"+out24+"  "+out25+"\n\n"+out26+"  "+out27+"\n\n"+out28+"  "+out29+"\n\n"+out30+"  "+out31+"\n\n"+out32+"  "+out33+"\n\n"+out34+"  "+out35+"\n\n"+out36+"  "+out37+"\n\n"+out38+"  "+out39+"\n\n"+out40+"  "+out41+"\n\n"+out42+"  "+out43; 
           JFileChooser saver = new JFileChooser("./");  
         int returnVal = saver.showSaveDialog(this);  
-        File file = saver.getSelectedFile();  
-        BufferedWriter writer = null;  
+        File fileSelector = saver.getSelectedFile();  
         if (returnVal == JFileChooser.APPROVE_OPTION)  
         {  
             try  
             {  
-            writer = new BufferedWriter( new FileWriter( file.getAbsolutePath()+".doc"));  
-            writer.write(out44);  
-            writer.close( );  
+                try (BufferedWriter writer = new BufferedWriter( new FileWriter( fileSelector.getAbsolutePath()+".doc"))) {
+                    writer.write(out44);
+                }  
             JOptionPane.showMessageDialog(this, "Basic Information was Saved Successfully!",  
                         "Success!", JOptionPane.INFORMATION_MESSAGE);  
             }  
@@ -2768,15 +2769,14 @@ import javax.swing.border.LineBorder;
           String out107 = out45+"\n\n"+out46+"  "+out47+"\n\n"+out48+"  "+out49+"\n\n"+out50+"  "+out51+"\n\n"+out52+"  "+out53+"\n\n"+out54+"  "+out55+"\n\n"+out56+"  "+out57+"\n\n"+out58+"  "+out59+"\n\n"+out60+"  "+out61+"\n\n"+out62+"  "+out63+"\n\n"+out64+"  "+out65+"\n\n"+out66+"  "+out67+"\n\n"+out68+"  "+out69+"\n\n"+out70+"  "+out71+"\n\n"+out72+"  "+out73+"\n\n"+out74+"  "+out75+"\n\n"+out76+"  "+out77+"\n\n"+out78+"  "+out79+"\n\n"+out80+"  "+out81+"\n\n"+out82+"  "+out83+"\n\n"+out84+"  "+out85+"\n\n"+out86+"  "+out87+"\n\n"+out88+"  "+out89+"\n\n"+out90+"  "+out91+"\n\n"+out92+"  "+out93+"\n\n"+out94+"  "+out95+"\n\n"+out96+"  "+out97+"\n\n"+out98+"  "+out99+"\n\n"+out100+"  "+out101+"\n\n"+out102+"\n"+out103+"  "+out104+"\n\n"+out105+"  "+out106; 
           JFileChooser saver = new JFileChooser("./");  
         int returnVal = saver.showSaveDialog(this);  
-        File file = saver.getSelectedFile();  
-        BufferedWriter writer = null;  
+        File getFile = saver.getSelectedFile();
         if (returnVal == JFileChooser.APPROVE_OPTION)  
         {  
             try  
             {  
-            writer = new BufferedWriter( new FileWriter( file.getAbsolutePath()+".doc"));  
-            writer.write(out107);  
-            writer.close( );  
+                try (BufferedWriter writer = new BufferedWriter( new FileWriter( getFile.getAbsolutePath()+".doc"))) {
+                    writer.write(out107);
+                }  
             JOptionPane.showMessageDialog(this, "Weekly Data was Saved Successfully!",  
                         "Success!", JOptionPane.INFORMATION_MESSAGE);  
             }  
@@ -2856,15 +2856,14 @@ import javax.swing.border.LineBorder;
           String out172 = out107+"\n\n\n"+out108+"  "+out109+"\n\n"+out110+"  "+out111+"\n\n"+out112+" "+out113+"   "+out114+"\n\n"+out115+" "+out116+"  "+out117+"\n\n"+out118+" "+out119+"  "+out120+"\n\n"+out121+"  "+out122+"\n\n"+out123+"  "+out124+"\n\n"+out125+" "+out126+"  "+out127+"\n\n"+out128+" "+out129+"  "+out130+"\n\n"+out131+"  "+out132+"\n\n"+out133+" "+out134+"  "+out135+"\n\n"+out136+" "+out137+"  "+out138+"\n\n"+out139+" "+out140+" "+out141+" "+out142+"  "+out143+" "+out144+" "+out145+"\n\n"+out146+" "+out147+" "+out148+"  "+out149+"\n\n"+out150+" "+out151+"  "+out152+"\n\n"+out153+"  "+out154+"\n\n"+out155+"  "+out156+"\n\n"+out157+"  "+out158+"\n\n"+out159+"  "+out160+"\n\n"+out161+" "+out162+" "+out163+"\n\n"+out164+" "+out165+"  "+out166+"\n\n"+out167+" "+out168+"  "+out169+"\n\n"+out170+"  "+out171; 
           JFileChooser saver = new JFileChooser("./");  
         int returnVal = saver.showSaveDialog(this);  
-        File file = saver.getSelectedFile();  
-        BufferedWriter writer = null;  
+        File choseFile = saver.getSelectedFile();  
         if (returnVal == JFileChooser.APPROVE_OPTION)  
         {  
             try  
             {  
-            writer = new BufferedWriter( new FileWriter( file.getAbsolutePath()+".doc"));  
-            writer.write(out172);  
-            writer.close( );  
+                try (BufferedWriter writer = new BufferedWriter( new FileWriter( choseFile.getAbsolutePath()+".doc"))) {
+                    writer.write(out172);
+                }  
             JOptionPane.showMessageDialog(this, "Quarterly Report was Saved Successfully!",  
                         "Success!", JOptionPane.INFORMATION_MESSAGE);  
             }  
@@ -2890,15 +2889,14 @@ import javax.swing.border.LineBorder;
           String out184 = out173+"\n\n\n"+out174+"  "+out175+"\n\n"+out176+"  "+out177+"\n\n"+out178+"  "+out179+"\n\n"+out180+"  "+out181+"\n\n"+out182+"  "+out183;
           JFileChooser saver = new JFileChooser("./");  
         int returnVal = saver.showSaveDialog(this);  
-        File file = saver.getSelectedFile();  
-        BufferedWriter writer = null;  
+        File writeFile = saver.getSelectedFile(); 
         if (returnVal == JFileChooser.APPROVE_OPTION)  
         {  
             try  
             {  
-            writer = new BufferedWriter( new FileWriter( file.getAbsolutePath()+".doc"));  
-            writer.write(out184);  
-            writer.close( );  
+                try (BufferedWriter writer = new BufferedWriter( new FileWriter( writeFile.getAbsolutePath()+".doc"))) {
+                    writer.write(out184);
+                }  
             JOptionPane.showMessageDialog(this, "Post Graduation was Saved Successfully!",  
                         "Success!", JOptionPane.INFORMATION_MESSAGE);  
             }  
@@ -2912,254 +2910,259 @@ import javax.swing.border.LineBorder;
     } 
     
     public void printActionPerformed(java.awt.event.ActionEvent evt) {  
-      if(t1.getTitleAt(t1.getSelectedIndex()).equals("Court Reviews")){
-          String out1 = label91.getText();         
-          String out2 = label92.getText();       
-          String out3 = txtcourtdate.getText();        
-          String out4 = label93.getText();        
-          String out5 = txtreviewdate.getText();       
-          String out6 = label94.getText();        
-          String out7 = txtcasenumber2.getText();        
-          String out8 = label95.getText();        
-          String out9 = txtname5.getText();        
-          String out10 = label96.getText();        
-          String out11 = txtbirthdate5.getText();        
-          String out12 = label97.getText();               
-          String out13 = (String) boxacceptance.getSelectedItem();
-          String out14 = label98.getText();
-          String out15 = txtreason.getText();
-          String printer = "\n"+out1+"\n\n"+out2+"  "+out3+"\n\n"+out4+"  "+out5+"\n\n"+out6+"  "+out7+"\n\n"+out8+"  "+out9+"\n\n"+out10+"  "+out11+"\n\n"+out12+"  "+out13+"\n\n"+out14+"\n"+out15;
-          PrinterJob job = PrinterJob.getPrinterJob();
-          Book bk = new Book();
-          bk.append(new County(printer), job.defaultPage());
-          job.setPageable(bk);     
-          if (job.printDialog())  
-          {
-            try { job.print(); }           
-            catch (Exception e) { }      
+          switch (t1.getTitleAt(t1.getSelectedIndex())) {
+              case "Court Reviews":
+                  {
+                      String out1 = label91.getText();
+                      String out2 = label92.getText();
+                      String out3 = txtcourtdate.getText();
+                      String out4 = label93.getText();
+                      String out5 = txtreviewdate.getText();
+                      String out6 = label94.getText();
+                      String out7 = txtcasenumber2.getText();
+                      String out8 = label95.getText();
+                      String out9 = txtname5.getText();
+                      String out10 = label96.getText();
+                      String out11 = txtbirthdate5.getText();
+                      String out12 = label97.getText();
+                      String out13 = (String) boxacceptance.getSelectedItem();
+                      String out14 = label98.getText();
+                      String out15 = txtreason.getText();
+                      String printCourt = "\n"+out1+"\n\n"+out2+"  "+out3+"\n\n"+out4+"  "+out5+"\n\n"+out6+"  "+out7+"\n\n"+out8+"  "+out9+"\n\n"+out10+"  "+out11+"\n\n"+out12+"  "+out13+"\n\n"+out14+"\n"+out15;
+                      PrinterJob job = PrinterJob.getPrinterJob();
+                      Book bk = new Book();
+                      bk.append(new County(printCourt), job.defaultPage());
+                      job.setPageable(bk);
+                      if (job.printDialog())
+                      {      
+                          try { job.print(); }
+                          catch (PrinterException e) { }
+                      }           break;
+                  }
+              case "Basic Information":
+                  {
+                      String out17 = label1.getText();
+                      String out18 = label2.getText();
+                      String out19 = txtcasenumber1.getText();
+                      String out20 = label3.getText();
+                      String out21 = txtentrydate.getText();
+                      String out22 = label4.getText();
+                      String out23 = txtdateofintake.getText();
+                      String out24 = label5.getText();
+                      String out25 = txtparticipantsname1.getText();
+                      String out26 = label6.getText();
+                      String out27 = txtdateofbirth.getText();
+                      String out28 = label7.getText();
+                      String out29 = txtage1.getText();
+                      String out30 = label9.getText();
+                      String out31 = txtaddress1.getText();
+                      String out32 = label8.getText();
+                      String out33 = txtphonenumber1.getText();
+                      String out34 = label10.getText();
+                      String out35 = txtlegalcharge.getText();
+                      String out36 = label11.getText();
+                      String out37 = txtemployername.getText();
+                      String out38 = label12.getText();
+                      String out39 = txtemployerphone.getText();
+                      String out40 = label13.getText();
+                      String out41 = txtcontactname.getText();
+                      String out42 = jlabel13.getText();
+                      String out43 = (String) boxresidentialtreatment.getSelectedItem();
+                      String printBasicInfo = "\n"+out17+"\n\n"+out18+"  "+out19+"\n\n"+out20+"  "+out21+"\n\n"+out22+"  "+out23+"\n\n"+out24+"\n"+out25+"\n\n"+out26+"  "+out27+"\n\n"+out28+"  "+out29+"\n\n"+out30+"  "+out31+"\n\n"+out32+"  "+out33+"\n\n"+out34+"  "+out35+"\n\n"+out36+"  "+out37+"\n\n"+out38+"  "+out39+"\n\n"+out40+"  "+out41+"\n\n"+out42+"  "+out43;
+                      PrinterJob job = PrinterJob.getPrinterJob();
+                      Book bk = new Book();
+                      bk.append(new County(printBasicInfo), job.defaultPage());
+                      job.setPageable(bk);
+                      if (job.printDialog())
+                      {
+                          try { job.print(); }
+                          catch (PrinterException e) { }
+                      }           break;
+                  }
+              case "Weekly Data":
+                  {
+                      String out45 = label14.getText();
+                      String out46 = jlabel17.getText();
+                      String out47 = txttodaysdate.getText();
+                      String out48 = label17.getText();
+                      String out49 = txtparticipantsnumber.getText();
+                      String out50 = label18.getText();
+                      String out51 = txtname2.getText();
+                      String out52 = label19.getText();
+                      String out53 = txtbirthdate2.getText();
+                      String out54 = label15.getText();
+                      String out55 = (String) boxphase.getSelectedItem();
+                      String out56 = jlabel20.getText();
+                      String out57 = txtterminationdate.getText();
+                      String out58 = label20.getText();
+                      String out59 = txtreasontermination.getText();
+                      String out60 = label21.getText();
+                      String out61 = txtgraddate.getText();
+                      String out62 = label22.getText();
+                      String out63 = txtreasononhold.getText();
+                      String out64 = label16.getText();
+                      String out65 = (String) boxstep.getSelectedItem();
+                      String out66 = jlabel26.getText();
+                      String out67 = txtfeebalance.getText();
+                      String out68 = jlabel25.getText();
+                      String out69 = txtfeeamount.getText();
+                      String out70 = label23.getText();
+                      String out71 = (String) boxfees.getSelectedItem();
+                      String out72 = label24.getText();
+                      String out73 = txtotherfees.getText();
+                      String out74 = label25.getText();
+                      String out75 = txtoffensedate.getText();
+                      String out76 = label26.getText();
+                      String out77 = txtreasonsanction.getText();
+                      String out78 = label27.getText();
+                      String out79 = txttypesanction.getText();
+                      String out80 = label28.getText();
+                      String out81 = txtsanctionorder.getText();
+                      String out82 = label29.getText();
+                      String out83 = txtdatescreening.getText();
+                      String out84 = jlabel30.getText();
+                      String out85 = (String) boxscreeningtypes.getSelectedItem();
+                      String out86 = label30.getText();
+                      String out87 = (String) boxscreeningresults.getSelectedItem();
+                      String out88 = label37.getText();
+                      String out89 = txtpositive.getText();
+                      String out90 = label31.getText();
+                      String out91 = txtdrugcourtattendance.getText();
+                      String out92 = label32.getText();
+                      String out93 = txtna.getText();
+                      String out94 = label33.getText();
+                      String out95 = txtaa.getText();
+                      String out96 = label34.getText();
+                      String out97 = txtcourtsessions.getText();
+                      String out98 = jlabel35.getText();
+                      String out99 = txtnewcharges.getText();
+                      String out100 = label35.getText();
+                      String out101 = (String) boxjobsituation2.getSelectedItem();
+                      String out102 = jlabel36.getText();
+                      String out103 = jlabel37.getText();
+                      String out104 = (String) boxdiploma.getSelectedItem();
+                      String out105 = label36.getText();
+                      String out106 = txtcounselor.getText();
+                      String printWeeklyData1 = "\n"+out45+"\n\n"+out46+"  "+out47+"\n\n"+out48+"  "+out49+"\n\n"+out50+"  "+out51+"\n\n"+out52+"  "+out53+"\n\n"+out54+"  "+out55+"\n\n"+out56+"  "+out57+"\n\n"+out58+"\n"+out59+"\n\n"+out60+"  "+out61+"\n\n"+out62+"\n"+out63+"\n\n"+out64+"  "+out65+"\n\n"+out66+"  "+out67+"\n\n"+out68+"  "+out69+"\n\n"+out70+"  "+out71+"\n\n"+out72+"  "+out73+"\n\n"+out74+"  "+out75;
+                      String printWeeklyData2 = "\n"+out76+"  "+out77+"\n\n"+out78+"  "+out79+"\n\n"+out80+"  "+out81+"\n\n"+out82+"  "+out83+"\n\n"+out84+"  "+out85+"\n\n"+out86+"  "+out87+"\n\n"+out88+"  "+out89+"\n\n"+out90+"  "+out91+"\n\n"+out92+"  "+out93+"\n\n"+out94+"  "+out95+"\n\n"+out96+"  "+out97+"\n\n"+out98+"  "+out99+"\n\n"+out100+"  "+out101+"\n\n"+out102+"\n"+out103+"  "+out104+"\n\n"+out105+"\n"+out106;
+                      PrinterJob job = PrinterJob.getPrinterJob();
+                      Book bk = new Book();
+                      bk.append(new County(printWeeklyData1), job.defaultPage());
+                      bk.append(new County(printWeeklyData2), job.defaultPage());
+                      job.setPageable(bk);
+                      if (job.printDialog())
+                      {
+                          try { job.print(); }
+                          catch (PrinterException e) { }
+                      }           break;
+                  }
+              case "Quarterly Report":
+                  {
+                      String out107 = label41.getText();
+                      String out108 = label43.getText();
+                      String out109 = txtquarterlydate.getText();
+                      String out110 = label42.getText();
+                      String out111 = (String) boxquarterly.getSelectedItem();
+                      String out112 = label44.getText();
+                      String out113 = label45.getText();
+                      String out114 = txtnumberreviewed.getText();
+                      String out115 = label46.getText();
+                      String out116 = label47.getText();
+                      String out117 = txtnumberaccepted.getText();
+                      String out118 = label48.getText();
+                      String out119 = label49.getText();
+                      String out120 = txtnumberrejected.getText();
+                      String out121 = label50.getText();
+                      String out122 = txtnumberdeclined.getText();
+                      String out123 = label51.getText();
+                      String out124 = txtnumberrejectedotherreasons.getText();
+                      String out125 = label52.getText();
+                      String out126 = label53.getText();
+                      String out127 = txtnumberawol.getText();
+                      String out128 = label54.getText();
+                      String out129 = label55.getText();
+                      String out130 = txtnumberterminated.getText();
+                      String out131 = label56.getText();
+                      String out132 = txtnumberdrugfreebabies.getText();
+                      String out133 = label57.getText();
+                      String out134 = label58.getText();
+                      String out135 = txtnumberrigthsterminated.getText();
+                      String out136 = label59.getText();
+                      String out137 = label60.getText();
+                      String out138 = txtnumbergeds.getText();
+                      String out139 = label61.getText();
+                      String out140 = label62.getText();
+                      String out141 = label63.getText();
+                      String out142 = label64.getText();
+                      String out143 = txtstartwages.getText();
+                      String out144 = label65.getText();
+                      String out145 = txtendwages.getText();
+                      String out146 = label66.getText();
+                      String out147 = label67.getText();
+                      String out148 = label68.getText();
+                      String out149 = (String) boxnumberasam.getSelectedItem();
+                      String out150 = label69.getText();
+                      String out151 = label70.getText();
+                      String out152 = txtnumberdrugscreen.getText();
+                      String out153 = label71.getText();
+                      String out154 = txtnumberurine.getText();
+                      String out155 = label72.getText();
+                      String out156 = txtnumberbreath.getText();
+                      String out157 = label73.getText();
+                      String out158 = txtnumbersaliva.getText();
+                      String out159 = label74.getText();
+                      String out160 = txtnumberhair.getText();
+                      String out161 = label75.getText();
+                      String out162 = label76.getText();
+                      String out163 = txtresidentialtreat.getText();
+                      String out164 = label77.getText();
+                      String out165 = label78.getText();
+                      String out166 = txtmentalillness.getText();
+                      String out167 = label79.getText();
+                      String out168 = label80.getText();
+                      String out169 = txtsubstanceabuse.getText();
+                      String out170 = label82.getText();
+                      String out171 = txtnumbergraduates.getText();
+                      String printQuarterlyReport1 = "\n"+out107+"\n\n"+out108+"  "+out109+"\n\n"+out110+"  "+out111+"\n\n"+out112+"\n"+out113+"   "+out114+"\n\n"+out115+"\n"+out116+"  "+out117+"\n\n"+out118+"\n"+out119+"  "+out120+"\n\n"+out121+"  "+out122+"\n\n"+out123+"  "+out124+"\n\n"+out125+"\n"+out126+"  "+out127+"\n\n"+out128+"\n"+out129+"  "+out130+"\n\n"+out131+"  "+out132+"\n\n"+out133+"\n"+out134+"  "+out135+"\n\n"+out136+"\n"+out137+"  "+out138+"\n\n";
+                      String printQuarterlyReport2 = "\n"+out139+"\n"+out140+"\n"+out141+"\n"+out142+":"+"   "+out143+"    "+out144+":"+"   "+out145+"\n\n"+out146+"\n"+out147+"\n"+out148+"  "+out149+"\n\n"+out150+"\n"+out151+"  "+out152+"\n\n"+out153+"  "+out154+"\n\n"+out155+"  "+out156+"\n\n"+out157+"  "+out158+"\n\n"+out159+"  "+out160+"\n\n"+out161+"\n"+out162+"  "+out163+"\n\n"+out164+"\n"+out165+"  "+out166+"\n\n"+out167+"\n"+out168+"  "+out169+"\n\n"+out170+"  "+out171;
+                      PrinterJob job = PrinterJob.getPrinterJob();
+                      Book bk = new Book();
+                      bk.append(new County(printQuarterlyReport1), job.defaultPage());
+                      bk.append(new County(printQuarterlyReport2), job.defaultPage());
+                      job.setPageable(bk);
+                      if (job.printDialog())
+                      {
+                          try { job.print(); }
+                          catch (PrinterException e) { }
+                      }           break;
+                  }
+              case "Post Graduation":
+                  {
+                      String out173 = label85.getText();
+                      String out174 = label86.getText();
+                      String out175 = txttodaysdate2.getText();
+                      String out176 = label87.getText();
+                      String out177 = txtname4.getText();
+                      String out178 = label88.getText();
+                      String out179 = txtbirthdate4.getText();
+                      String out180 = label89.getText();
+                      String out181 = txtnewcharges2.getText();
+                      String out182 = label90.getText();
+                      String out183 = txtarrestreason.getText();
+                      String printPostGraduation = "\n"+out173+"\n\n"+out174+"  "+out175+"\n\n"+out176+"  "+out177+"\n\n"+out178+"  "+out179+"\n\n"+out180+"\n"+out181+"\n\n"+out182+"\n"+out183;
+                      PrinterJob job = PrinterJob.getPrinterJob();
+                      Book bk = new Book();
+                      bk.append(new County(printPostGraduation), job.defaultPage());
+                      job.setPageable(bk);
+                      if (job.printDialog())
+                      {
+                          try { job.print(); }
+                          catch (PrinterException e) { }
+                      }            break;
+                  }
+              default:
+                  break;
           }
-      }
-   
-         else if(t1.getTitleAt(t1.getSelectedIndex()).equals("Basic Information")){
-          String out17 = label1.getText();         
-          String out18 = label2.getText();       
-          String out19 = txtcasenumber1.getText();        
-          String out20 = label3.getText();        
-          String out21 = txtentrydate.getText();       
-          String out22 = label4.getText();        
-          String out23 = txtdateofintake.getText();        
-          String out24 = label5.getText();        
-          String out25 = txtparticipantsname1.getText();        
-          String out26 = label6.getText();        
-          String out27 = txtdateofbirth.getText();        
-          String out28 = label7.getText();               
-          String out29 = txtage1.getText();
-          String out30 = label9.getText();
-          String out31 = txtaddress1.getText();
-          String out32 = label8.getText();
-          String out33 = txtphonenumber1.getText();
-          String out34 = label10.getText();
-          String out35 = txtlegalcharge.getText();
-          String out36 = label11.getText();
-          String out37 = txtemployername.getText();
-          String out38 = label12.getText();
-          String out39 = txtemployerphone.getText();
-          String out40 = label13.getText();
-          String out41 = txtcontactname.getText();
-          String out42 = jlabel13.getText();         
-          String out43 = (String) boxresidentialtreatment.getSelectedItem();
-          String printer = "\n"+out17+"\n\n"+out18+"  "+out19+"\n\n"+out20+"  "+out21+"\n\n"+out22+"  "+out23+"\n\n"+out24+"\n"+out25+"\n\n"+out26+"  "+out27+"\n\n"+out28+"  "+out29+"\n\n"+out30+"  "+out31+"\n\n"+out32+"  "+out33+"\n\n"+out34+"  "+out35+"\n\n"+out36+"  "+out37+"\n\n"+out38+"  "+out39+"\n\n"+out40+"  "+out41+"\n\n"+out42+"  "+out43; 
-          PrinterJob job = PrinterJob.getPrinterJob();
-          Book bk = new Book();      
-          bk.append(new County(printer), job.defaultPage());
-          job.setPageable(bk);     
-          if (job.printDialog())  
-          {
-            try { job.print(); }           
-            catch (Exception e) { }      
-          }
-         }        
-          
-         else if(t1.getTitleAt(t1.getSelectedIndex()).equals("Weekly Data")){
-          String out45 = label14.getText();         
-          String out46 = jlabel17.getText();       
-          String out47 = txttodaysdate.getText();        
-          String out48 = label17.getText();        
-          String out49 = txtparticipantsnumber.getText();       
-          String out50 = label18.getText();        
-          String out51 = txtname2.getText();        
-          String out52 = label19.getText();        
-          String out53 = txtbirthdate2.getText();        
-          String out54 = label15.getText();        
-          String out55 = (String) boxphase.getSelectedItem();        
-          String out56 = jlabel20.getText();               
-          String out57 = txtterminationdate.getText();
-          String out58 = label20.getText();
-          String out59 = txtreasontermination.getText();
-          String out60 = label21.getText();
-          String out61 = txtgraddate.getText();
-          String out62 = label22.getText();
-          String out63 = txtreasononhold.getText();
-          String out64 = label16.getText();
-          String out65 = (String) boxstep.getSelectedItem();
-          String out66 = jlabel26.getText();
-          String out67 = txtfeebalance.getText();
-          String out68 = jlabel25.getText();
-          String out69 = txtfeeamount.getText();
-          String out70 = label23.getText();
-          String out71 = (String) boxfees.getSelectedItem();
-          String out72 = label24.getText();         
-          String out73 = txtotherfees.getText();       
-          String out74 = label25.getText();        
-          String out75 = txtoffensedate.getText();        
-          String out76 = label26.getText();       
-          String out77 = txtreasonsanction.getText();        
-          String out78 = label27.getText();        
-          String out79 = txttypesanction.getText();        
-          String out80 = label28.getText();        
-          String out81 = txtsanctionorder.getText();        
-          String out82 = label29.getText();        
-          String out83 = txtdatescreening.getText();               
-          String out84 = jlabel30.getText();
-          String out85 = (String) boxscreeningtypes.getSelectedItem();
-          String out86 = label30.getText();
-          String out87 = (String) boxscreeningresults.getSelectedItem();
-          String out88 = label37.getText();
-          String out89 = txtpositive.getText();
-          String out90 = label31.getText();
-          String out91 = txtdrugcourtattendance.getText();
-          String out92 = label32.getText();
-          String out93 = txtna.getText();
-          String out94 = label33.getText();
-          String out95 = txtaa.getText();
-          String out96 = label34.getText();
-          String out97 = txtcourtsessions.getText();
-          String out98 = jlabel35.getText();
-          String out99 = txtnewcharges.getText();
-          String out100 = label35.getText();
-          String out101 = (String) boxjobsituation2.getSelectedItem();
-          String out102 = jlabel36.getText();
-          String out103 = jlabel37.getText();
-          String out104 = (String) boxdiploma.getSelectedItem();
-          String out105 = label36.getText();
-          String out106 = txtcounselor.getText();
-          String printer = "\n"+out45+"\n\n"+out46+"  "+out47+"\n\n"+out48+"  "+out49+"\n\n"+out50+"  "+out51+"\n\n"+out52+"  "+out53+"\n\n"+out54+"  "+out55+"\n\n"+out56+"  "+out57+"\n\n"+out58+"\n"+out59+"\n\n"+out60+"  "+out61+"\n\n"+out62+"\n"+out63+"\n\n"+out64+"  "+out65+"\n\n"+out66+"  "+out67+"\n\n"+out68+"  "+out69+"\n\n"+out70+"  "+out71+"\n\n"+out72+"  "+out73+"\n\n"+out74+"  "+out75;
-          String printer1 = "\n"+out76+"  "+out77+"\n\n"+out78+"  "+out79+"\n\n"+out80+"  "+out81+"\n\n"+out82+"  "+out83+"\n\n"+out84+"  "+out85+"\n\n"+out86+"  "+out87+"\n\n"+out88+"  "+out89+"\n\n"+out90+"  "+out91+"\n\n"+out92+"  "+out93+"\n\n"+out94+"  "+out95+"\n\n"+out96+"  "+out97+"\n\n"+out98+"  "+out99+"\n\n"+out100+"  "+out101+"\n\n"+out102+"\n"+out103+"  "+out104+"\n\n"+out105+"\n"+out106; 
-          PrinterJob job = PrinterJob.getPrinterJob();
-          Book bk = new Book();      
-          bk.append(new County(printer), job.defaultPage());
-          bk.append(new County(printer1), job.defaultPage());
-          job.setPageable(bk);     
-          if (job.printDialog())  
-          {
-            try { job.print(); }           
-            catch (Exception e) { }      
-          }
-         }       
-         
-         else if(t1.getTitleAt(t1.getSelectedIndex()).equals("Quarterly Report")){
-          String out107 = label41.getText();         
-          String out108 = label43.getText();       
-          String out109 = txtquarterlydate.getText();        
-          String out110 = label42.getText();        
-          String out111 = (String) boxquarterly.getSelectedItem();       
-          String out112 = label44.getText();        
-          String out113 = label45.getText();        
-          String out114 = txtnumberreviewed.getText();        
-          String out115 = label46.getText();        
-          String out116 = label47.getText();        
-          String out117 = txtnumberaccepted.getText();        
-          String out118 = label48.getText();               
-          String out119 = label49.getText();
-          String out120 = txtnumberrejected.getText();
-          String out121 = label50.getText();
-          String out122 = txtnumberdeclined.getText();
-          String out123 = label51.getText();
-          String out124 = txtnumberrejectedotherreasons.getText();
-          String out125 = label52.getText();
-          String out126 = label53.getText();
-          String out127 = txtnumberawol.getText();
-          String out128 = label54.getText();
-          String out129 = label55.getText();
-          String out130 = txtnumberterminated.getText();
-          String out131 = label56.getText();
-          String out132 = txtnumberdrugfreebabies.getText();
-          String out133 = label57.getText();
-          String out134 = label58.getText();         
-          String out135 = txtnumberrigthsterminated.getText();       
-          String out136 = label59.getText();        
-          String out137 = label60.getText();        
-          String out138 = txtnumbergeds.getText();       
-          String out139 = label61.getText();        
-          String out140 = label62.getText();        
-          String out141 = label63.getText();        
-          String out142 = label64.getText();        
-          String out143 = txtstartwages.getText();        
-          String out144 = label65.getText();        
-          String out145 = txtendwages.getText();               
-          String out146 = label66.getText();
-          String out147 = label67.getText();
-          String out148 = label68.getText();
-          String out149 = (String) boxnumberasam.getSelectedItem();
-          String out150 = label69.getText();
-          String out151 = label70.getText();
-          String out152 = txtnumberdrugscreen.getText();
-          String out153 = label71.getText();
-          String out154 = txtnumberurine.getText();
-          String out155 = label72.getText();
-          String out156 = txtnumberbreath.getText();
-          String out157 = label73.getText();
-          String out158 = txtnumbersaliva.getText();
-          String out159 = label74.getText();
-          String out160 = txtnumberhair.getText();
-          String out161 = label75.getText();
-          String out162 = label76.getText();
-          String out163 = txtresidentialtreat.getText();
-          String out164 = label77.getText();
-          String out165 = label78.getText();
-          String out166 = txtmentalillness.getText();
-          String out167 = label79.getText();
-          String out168 = label80.getText();
-          String out169 = txtsubstanceabuse.getText();
-          String out170 = label82.getText();
-          String out171 = txtnumbergraduates.getText();
-          String printer = "\n"+out107+"\n\n"+out108+"  "+out109+"\n\n"+out110+"  "+out111+"\n\n"+out112+"\n"+out113+"   "+out114+"\n\n"+out115+"\n"+out116+"  "+out117+"\n\n"+out118+"\n"+out119+"  "+out120+"\n\n"+out121+"  "+out122+"\n\n"+out123+"  "+out124+"\n\n"+out125+"\n"+out126+"  "+out127+"\n\n"+out128+"\n"+out129+"  "+out130+"\n\n"+out131+"  "+out132+"\n\n"+out133+"\n"+out134+"  "+out135+"\n\n"+out136+"\n"+out137+"  "+out138+"\n\n";
-          String printer1 = "\n"+out139+"\n"+out140+"\n"+out141+"\n"+out142+":"+"   "+out143+"    "+out144+":"+"   "+out145+"\n\n"+out146+"\n"+out147+"\n"+out148+"  "+out149+"\n\n"+out150+"\n"+out151+"  "+out152+"\n\n"+out153+"  "+out154+"\n\n"+out155+"  "+out156+"\n\n"+out157+"  "+out158+"\n\n"+out159+"  "+out160+"\n\n"+out161+"\n"+out162+"  "+out163+"\n\n"+out164+"\n"+out165+"  "+out166+"\n\n"+out167+"\n"+out168+"  "+out169+"\n\n"+out170+"  "+out171; 
-          PrinterJob job = PrinterJob.getPrinterJob();
-          Book bk = new Book();      
-          bk.append(new County(printer), job.defaultPage());
-          bk.append(new County(printer1), job.defaultPage());
-          job.setPageable(bk);     
-          if (job.printDialog())  
-          {
-            try { job.print(); }           
-            catch (Exception e) { }      
-          }
-         }
-         
-         else if(t1.getTitleAt(t1.getSelectedIndex()).equals("Post Graduation")){
-         String out173 = label85.getText();         
-         String out174 = label86.getText();       
-         String out175 = txttodaysdate2.getText();        
-         String out176 = label87.getText();        
-         String out177 = txtname4.getText(); 
-         String out178 = label88.getText();         
-         String out179 = txtbirthdate4.getText();       
-         String out180 = label89.getText();        
-         String out181 = txtnewcharges2.getText();        
-         String out182 = label90.getText();
-         String out183 = txtarrestreason.getText();
-         String printer = "\n"+out173+"\n\n"+out174+"  "+out175+"\n\n"+out176+"  "+out177+"\n\n"+out178+"  "+out179+"\n\n"+out180+"\n"+out181+"\n\n"+out182+"\n"+out183;
-         PrinterJob job = PrinterJob.getPrinterJob();
-         Book bk = new Book();      
-         bk.append(new County(printer), job.defaultPage());
-         job.setPageable(bk);     
-         if (job.printDialog())  
-         {
-           try { job.print(); }           
-           catch (Exception e) { }      
-         }
-         }
       }
     
     public void exitActionPerformed(java.awt.event.ActionEvent evt) {          
@@ -3219,7 +3222,7 @@ import javax.swing.border.LineBorder;
             pst.setString(2, tf2.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Created Excel File");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -3277,7 +3280,7 @@ import javax.swing.border.LineBorder;
             pst.setString(2, tf4.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Created Excel File");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -3335,7 +3338,7 @@ import javax.swing.border.LineBorder;
             pst.setString(2, tf6.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Created Excel File");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -3393,7 +3396,7 @@ import javax.swing.border.LineBorder;
             pst.setString(2, tf8.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Created Excel File");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -3451,7 +3454,7 @@ import javax.swing.border.LineBorder;
             pst.setString(2, tf10.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Created Excel File");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -3487,10 +3490,10 @@ import javax.swing.border.LineBorder;
             pst.setString(10, txtemployername.getText());
             pst.setString(11, txtemployerphone.getText());
             pst.setString(12, txtcontactname.getText());
-            pst.setString(13, Name1.toString());
+            pst.setString(13, Name1);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Changes Submitted");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     
@@ -3511,35 +3514,35 @@ import javax.swing.border.LineBorder;
             pst.setString(2, txtparticipantsnumber.getText());
             pst.setString(3, txtname2.getText());
             pst.setString(4, txtbirthdate2.getText());
-            pst.setString(5, Name13.toString());
+            pst.setString(5, Name13);
             pst.setString(6, txtterminationdate.getText());
             pst.setString(7, txtreasontermination.getText());
             pst.setString(8, txtgraddate.getText());
             pst.setString(9, txtreasononhold.getText());
-            pst.setString(10, Name14.toString());           
+            pst.setString(10, Name14);           
             pst.setString(11, txtfeebalance.getText());
             pst.setString(12, txtfeeamount.getText());
-            pst.setString(13, Name15.toString());
+            pst.setString(13, Name15);
             pst.setString(14, txtotherfees.getText());
             pst.setString(15, txtoffensedate.getText());
             pst.setString(16, txtreasonsanction.getText());
             pst.setString(17, txttypesanction.getText());
             pst.setString(18, txtsanctionorder.getText());
             pst.setString(19, txtdatescreening.getText());
-            pst.setString(20, Name16.toString());
-            pst.setString(21, Name17.toString());
+            pst.setString(20, Name16);
+            pst.setString(21, Name17);
             pst.setString(22, txtpositive.getText());
             pst.setString(23, txtdrugcourtattendance.getText());
             pst.setString(24, txtna.getText());
             pst.setString(25, txtaa.getText());
             pst.setString(26, txtcourtsessions.getText());
             pst.setString(27, txtnewcharges.getText());
-            pst.setString(28, Name18.toString());
-            pst.setString(29, Name19.toString());
+            pst.setString(28, Name18);
+            pst.setString(29, Name19);
             pst.setString(30, txtcounselor.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Changes Submitted");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }      
@@ -3551,7 +3554,7 @@ import javax.swing.border.LineBorder;
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, txtquarterlydate.getText());
-            pst.setString(2, Name18.toString());
+            pst.setString(2, Name18);
             pst.setString(3, txtnumberreviewed.getText());
             pst.setString(4, txtnumberaccepted.getText());
             pst.setString(5, txtnumberrejected.getText());
@@ -3564,7 +3567,7 @@ import javax.swing.border.LineBorder;
             pst.setString(12, txtnumbergeds.getText());
             pst.setString(13, txtstartwages.getText());
             pst.setString(14, txtendwages.getText());
-            pst.setString(15, Name19.toString());
+            pst.setString(15, Name19);
             pst.setString(16, txtnumberdrugscreen.getText());
             pst.setString(17, txtnumberurine.getText());
             pst.setString(18, txtnumberbreath.getText());
@@ -3576,7 +3579,7 @@ import javax.swing.border.LineBorder;
             pst.setString(24, txtnumbergraduates.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Changes Submitted");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }  
@@ -3591,7 +3594,7 @@ import javax.swing.border.LineBorder;
             ta5.setModel(DbUtils.resultSetToTableModel(rs));
             columnWidths(ta5);
             JOptionPane.showMessageDialog(this, "Added");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(this, "Not Found");
         }
         }  
@@ -3607,7 +3610,7 @@ import javax.swing.border.LineBorder;
             pst.setString(5, txtarrestreason.getText());
             pst.execute();
             JOptionPane.showMessageDialog(this, "Changes Submitted");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }  
@@ -3622,11 +3625,11 @@ import javax.swing.border.LineBorder;
             pst.setString(3, txtcasenumber2.getText());
             pst.setString(4, txtname5.getText());
             pst.setString(5, txtbirthdate5.getText());
-            pst.setString(6, Name.toString());
+            pst.setString(6, Name);
             pst.setString(7, txtreason.getText());
             pst.execute();
             JOptionPane.showMessageDialog(this, "Changes Submitted");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }  
@@ -3742,7 +3745,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta1.setModel(DbUtils.resultSetToTableModel(rs));
             UpdateJTable1();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error in Connection");
         }
        }                                           
@@ -3754,7 +3757,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta2.setModel(DbUtils.resultSetToTableModel(rs));
             UpdateJTable2();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error in Connection");
         }
         }  
@@ -3766,7 +3769,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta4.setModel(DbUtils.resultSetToTableModel(rs));
             UpdateJTable3();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error in Connection");
         }
         }     
@@ -3778,7 +3781,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta6.setModel(DbUtils.resultSetToTableModel(rs));
             UpdateJTable4();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error in Connection");
         }
         }   
@@ -3790,7 +3793,7 @@ import javax.swing.border.LineBorder;
             rs = pst.executeQuery();
             ta7.setModel(DbUtils.resultSetToTableModel(rs));
             UpdateJTable5();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error in Connection");
         }
         }    
@@ -3902,7 +3905,7 @@ import javax.swing.border.LineBorder;
             pst.execute();
             JOptionPane.showMessageDialog(null, "Deleted");
             UpdateJTable1();
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }                                                                                   
@@ -3915,7 +3918,7 @@ import javax.swing.border.LineBorder;
             pst.execute();
             JOptionPane.showMessageDialog(null, "Deleted");
             UpdateJTable2();
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }                                          
@@ -3929,7 +3932,7 @@ import javax.swing.border.LineBorder;
             pst.execute();
             JOptionPane.showMessageDialog(null, "Deleted");
             UpdateJTable3();
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         }                                          
@@ -3942,7 +3945,7 @@ import javax.swing.border.LineBorder;
                  pst.execute();
                  JOptionPane.showMessageDialog(null, "Deleted");
                  UpdateJTable4();
-            } catch (Exception e) {
+            } catch (HeadlessException | SQLException e) {
               JOptionPane.showMessageDialog(null, e);
             }
         }   
@@ -3955,7 +3958,7 @@ import javax.swing.border.LineBorder;
                  pst.execute();
                  JOptionPane.showMessageDialog(null, "Deleted");
                  UpdateJTable5();
-            } catch (Exception e) {
+            } catch (HeadlessException | SQLException e) {
               JOptionPane.showMessageDialog(null, e);
             }
         }  

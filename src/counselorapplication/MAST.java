@@ -1,18 +1,11 @@
 package counselorapplication;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ContainerListener;
 import java.awt.event.WindowListener;
 import java.awt.event.FocusListener;
-import java.beans.PropertyChangeListener;
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import net.proteanit.sql.DbUtils;
 import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -898,6 +891,7 @@ public class MAST extends javax.swing.JFrame implements ActionListener, WindowLi
 
     }
 
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == cmdscore1) {
             MAST.this.cmdscore1ActionPerformed(evt);
@@ -910,33 +904,42 @@ public class MAST extends javax.swing.JFrame implements ActionListener, WindowLi
         }
     }
     
+    @Override
     public void focusGained(java.awt.event.FocusEvent evt) {
     }
 
+    @Override
     public void focusLost(java.awt.event.FocusEvent evt) {
         if (evt.getSource() == txtbirthdate) {
             MAST.this.txtbirthdateFocusLost(evt);
         }
     }
     
+    @Override
     public void windowActivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosed(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowClosing(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeactivated(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowDeiconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowIconified(java.awt.event.WindowEvent evt) {
     }
 
+    @Override
     public void windowOpened(java.awt.event.WindowEvent evt) {
         if (evt.getSource() == MAST.this) {
             try {
@@ -974,7 +977,7 @@ public class MAST extends javax.swing.JFrame implements ActionListener, WindowLi
             else {              
               JOptionPane.showMessageDialog(null,"Name & Birth Date Not Found");
             }            
-        }catch (Exception e){}
+        }catch (HeadlessException e){}
     }
 
     public void cmdscore1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1112,9 +1115,9 @@ public class MAST extends javax.swing.JFrame implements ActionListener, WindowLi
         }
         sum = 0;    
         
-        int v[] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20, t21, t22, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22};                                   
-        for ( i = 0; i < v.length; i++){       
-        sum += v[i];        
+        int scores[] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20, t21, t22, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22};                                   
+        for ( i = 0; i < scores.length; i++){       
+        sum += scores[i];        
         }
         g = Integer.toString(sum);
         txttestscore.setText(g);
@@ -1178,7 +1181,7 @@ public class MAST extends javax.swing.JFrame implements ActionListener, WindowLi
             pst.setString(4, txttestscore.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Submitted to Database");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }  
     }

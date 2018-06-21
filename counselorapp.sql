@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `counselor_login`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `counselor_login` (
   `UserName` varchar(30) NOT NULL,
-  `UserPassword` varchar(20) NOT NULL,
+  `UserPassword` varchar(64) NOT NULL,
   PRIMARY KEY (`UserName`,`UserPassword`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,7 +70,7 @@ CREATE TABLE `counselor_login` (
 
 LOCK TABLES `counselor_login` WRITE;
 /*!40000 ALTER TABLE `counselor_login` DISABLE KEYS */;
-INSERT INTO `counselor_login` VALUES ('User1','wes123');
+INSERT INTO `counselor_login` VALUES ('User1','e91b3dd87261de5d31a93bc4428fdb2c');
 /*!40000 ALTER TABLE `counselor_login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ DROP TABLE IF EXISTS `court_login`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `court_login` (
   `UserName` varchar(30) NOT NULL,
-  `UserPassword` varchar(20) NOT NULL,
+  `UserPassword` varchar(64) NOT NULL,
   PRIMARY KEY (`UserName`,`UserPassword`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -94,7 +94,7 @@ CREATE TABLE `court_login` (
 
 LOCK TABLES `court_login` WRITE;
 /*!40000 ALTER TABLE `court_login` DISABLE KEYS */;
-INSERT INTO `court_login` VALUES ('User1','wes123');
+INSERT INTO `court_login` VALUES ('User1','e91b3dd87261de5d31a93bc4428fdb2c');
 /*!40000 ALTER TABLE `court_login` ENABLE KEYS */;
 UNLOCK TABLES;
 
