@@ -15,6 +15,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+DROP DATABASE IF EXISTS `counselorapp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE DATABASE `counselorapp`;
+
+USE `counselorapp`;
+
 --
 -- Table structure for table `basic_information`
 --
@@ -60,7 +67,7 @@ DROP TABLE IF EXISTS `counselor_login`;
 CREATE TABLE `counselor_login` (
   `UserName` varchar(30) NOT NULL,
   `UserPassword` varchar(64) NOT NULL,
-  PRIMARY KEY (`UserName`,`UserPassword`)
+  PRIMARY KEY (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -84,7 +91,7 @@ DROP TABLE IF EXISTS `court_login`;
 CREATE TABLE `court_login` (
   `UserName` varchar(30) NOT NULL,
   `UserPassword` varchar(64) NOT NULL,
-  PRIMARY KEY (`UserName`,`UserPassword`)
+  PRIMARY KEY (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

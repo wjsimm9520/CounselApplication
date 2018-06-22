@@ -307,7 +307,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
 
     public void cmdcountyActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException {    
        conn = mysqlconnect.ConnectDb();
-       URL icon1 = this.getClass().getClassLoader().getResource("database.png");
+       URL icon1 = this.getClass().getClassLoader().getResource("login.jpg");
        ImageIcon ic1 = new ImageIcon(icon1);
        frame3 = new JFrame();
        frame3.setTitle("Login to Court Program");
@@ -351,29 +351,11 @@ public class FrontOfApplication extends JFrame implements ActionListener {
        frame3.setVisible(true); 
     }
     
-    public String generateHashedPassword(String passwordToHash){
-        String generatedPassword = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(passwordToHash.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            generatedPassword = sb.toString();
-            
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(FrontOfApplication.class.getName()).log(Level.SEVERE, null, ex);
-        }
-	return generatedPassword;
-    }
-    
     public void bsubmit2ActionPerformed(java.awt.event.ActionEvent evt) {          
         userName2 = tf3.getText();
         password2 = tf4.getText();
-        String hashedPassword = generateHashedPassword(password2);
+        HashPassword hashPass = new HashPassword();
+        String hashedPassword = hashPass.generateHashedPassword(password2);
         String sql = "SELECT * FROM court_login WHERE UserName = ? AND UserPassword = ?;";
         try {
             pst = conn.prepareStatement(sql);
@@ -410,7 +392,7 @@ public class FrontOfApplication extends JFrame implements ActionListener {
     
     public void cmdexportActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException { 
        conn = mysqlconnect.ConnectDb();
-       URL icon2 = this.getClass().getClassLoader().getResource("database.png");
+       URL icon2 = this.getClass().getClassLoader().getResource("login.jpg");
        ImageIcon ic2 = new ImageIcon(icon2);
        frame2 = new JFrame();
        frame2.setTitle("Access to Data");
@@ -458,7 +440,8 @@ public class FrontOfApplication extends JFrame implements ActionListener {
         frame2.dispose();
         userName1 = tf1.getText();
         password1 = tf2.getText();
-        String hashedPassword = generateHashedPassword(password1);
+        HashPassword hashPass = new HashPassword();
+        String hashedPassword = hashPass.generateHashedPassword(password1);
         String sql = "SELECT * FROM counselor_login WHERE UserName = ? AND UserPassword = ?;";
         try {
             pst = conn.prepareStatement(sql);
